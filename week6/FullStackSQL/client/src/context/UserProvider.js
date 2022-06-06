@@ -6,9 +6,10 @@ export const UserContext = createContext()
 
 const UserProvider = (props) => {
     const initState = {
-        user:" ",
-        password:" ",
-        id:" "
+        username: '',
+        email: '',
+        password: '',
+        id: ''
     }
 
     const [userState, setUserState] = useState(initState)
@@ -17,10 +18,16 @@ const UserProvider = (props) => {
         console.log(inputs)
         axios.post('http://localhost:9000/signup', inputs)
         .then(res => {
-            console.log(res.data)
+            const {username, email, id} = res.data[0]
+            localStorage.setItem('id', id)
+            localStorage.setItem('username', username)
+            localStorage.setItem('email', email)
 
             setUserState(prevUserState => ({
-                ...prevUserState
+                ...prevUserState,
+                username,
+                id,
+                email
             }))
             console.log("data sent")
         })
@@ -29,22 +36,37 @@ const UserProvider = (props) => {
 
     const login = (inputs) => {
         console.log(inputs)
-        axios.post('http://localhost:9000/user', inputs)
+        axios.post('http://localhost:9000/login', inputs)
         .then(res => {
             console.log(res.data)
+            const {username, email, id} = res.data[0]
+            localStorage.setItem('id', id)
+            localStorage.setItem('username', username)
+            localStorage.setItem('email', email)
+
+            const userInfo = res.data[0]
+            setUserState(userInfo)
         })
-        // displayUserInfo()
     }
 
-    // const displayUserInfo = () => {
-    //     axios.get("http://localhost:9000/user")
-    //     .then((res) => {
-    //         console.log(res)
-    //     })
-    // }
+    const logout = () => {
+        localStorage.removeItem('id')
+        localStorage.removeItem('username')
+        localStorage.removeItem('email')
+        setUserState(initState)
+    }
+
+    useEffect(() => {
+        setUserState(prevUserState => ({
+            ...prevUserState,
+            id: localStorage.getItem('id'),
+            username: localStorage.getItem('username'),
+            email: localStorage.getItem('email')
+        }))
+    }, [])
 
     return(
-        <UserContext.Provider value={ {...userState, signUp, login } }>
+        <UserContext.Provider value={ {...userState, signUp, login, logout } }>
             { props.children }
         </UserContext.Provider>
     )

@@ -1,5 +1,176 @@
+html{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
 .App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   text-align: center;
+}
+
+.main-container {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  background-color: rgb(197, 233, 241);
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 500px;
+  box-shadow: 5px 5px rgba(34, 23, 23, 0.5);
+  border-radius: 10px;
+  border: 3px solid rgb(197, 233, 241);
+}
+
+.logintitle {
+  position: relative;
+  right: 75px;
+  color: rgb(39, 123, 219);
+}
+
+.login-wrapper {
+  background-color: rgb(255, 255, 255);
+  position: bottom;
+  height: 300px;
+  border-radius: 10px;
+}
+
+.login-form-wrapper {
+  background-color: rgb(255, 255, 255);
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.username {
+  position: relative;
+  left: 8px;
+  height: 40px;
+  width: 300px;
+  border-radius: 3px;
+}
+
+.password {
+  position: relative;
+  top: 20px;
+  left: 8px;
+  height: 40px;
+  width: 300px;
+  border-radius: 3px;
+}
+
+.email {
+  position: relative;
+  top: 10px;
+  left: 8px;
+  height: 40px;
+  width: 300px;
+  border-radius: 3px;
+}
+
+.login-btn{
+  position: relative;
+  top: 65px;
+  right: 300px;
+  color: white;
+  background-color: rgb(25, 177, 25);
+  width: 100px;
+  height: 30px;
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+
+button {
+  cursor: pointer;
+  opacity: .8;
+}
+button:hover{
+  opacity: 1;
+}
+.loginform {
+background-color: rgba(32, 201, 144, 0.781);
+}
+
+.account {
+  display: flex;
+  flex-direction: row;
+}
+
+.account-txt {
+  margin-left: 10px;
+}
+.account-nav {
+  display: flex;
+  margin-left: 10px;
+  color: white;
+  background-color: rgb(89, 189, 228);
+  width: 150px;
+  height: 20px;
+  border: 1px solid grey;
+  border-radius: 3px;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.account-nav:hover{
+  border: 1px solid black;
+}
+
+hr {
+  margin-top: 30px;
+}
+
+.profile-container {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  background-color: rgb(197, 233, 241);
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 500px;
+  box-shadow: 5px 5px rgba(34, 23, 23, 0.5);
+  border-radius: 10px;
+  border: 3px solid rgb(197, 233, 241);
+}
+
+.profile-header {
+  position: relative;
+  bottom: 30px;
+  color: rgb(39, 123, 219);
+}
+
+.info-container {
+  background-color: rgb(255, 255, 255);
+  width: 500px;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.profile-info {
+  margin-bottom: 10px;
+  margin-left: 10px;
+}
+
+.logout-btn {
+  position: relative;
+  top: 20px;
+  color: white;
+  background-color: rgb(25, 177, 25);
+  width: 100px;
+  height: 30px;
+  border: 1px solid grey;
+  border-radius: 3px;
 }
 
 

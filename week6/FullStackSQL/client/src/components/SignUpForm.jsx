@@ -1,4 +1,4 @@
-const LoginForm = ( { handleChange, handleSubmit, btnText, inputs} ) => {
+const SignUpForm = ( { handleChange, handleSubmit, btnText, inputs} ) => {
 
     return(
         <div className="login-form-wrapper">
@@ -10,6 +10,13 @@ const LoginForm = ( { handleChange, handleSubmit, btnText, inputs} ) => {
                     name={'username'}
                     onChange={handleChange}
                     placeholder="Username"/>
+                <input 
+                    className="email"
+                    type="text"
+                    value={inputs.email}
+                    name={'email'}
+                    onChange={handleChange}
+                    placeholder="Email Address"/>
                 <input
                     className="password"
                     type="password"
@@ -23,4 +30,4 @@ const LoginForm = ( { handleChange, handleSubmit, btnText, inputs} ) => {
     )
 }
 
-export default LoginForm;
+export default SignUpForm;

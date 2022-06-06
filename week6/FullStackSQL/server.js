@@ -29,10 +29,11 @@ app.post('/signup', (req, res) => {
     console.log(req.body)
     const username = req.body.username
     const password = req.body.password
+    const email = req.body.email
 
     db.query(
-        "INSERT INTO users (username, password) VALUES (?,?)", 
-        [username, password], ( err, result) => {
+        "INSERT INTO users (username, password, email) VALUES (?,?,?)", 
+        [username, password, email], ( err, result) => {
             if(err){
                 throw err
             }
@@ -41,15 +42,29 @@ app.post('/signup', (req, res) => {
     )
 })
 
-app.get('/user', (req, res) => {
-    console.log(res)
-    db.query("SELECT * FROM users", (err, result) => {
+app.post('/login', (req, res) => {
+    let username = req.body.username
+    db.query(`SELECT * FROM users WHERE username = '${username}'`, (err, result) => {
         if(err){
             throw err
         }
         res.send(result)
     })
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //Create DB
 app.get('/createDB', (req, res) => {

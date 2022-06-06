@@ -1,8 +1,9 @@
 import { useState, useContext } from "react";
 import LoginForm from "./LoginForm";
 import { UserContext } from "../context/UserProvider";
+import SignUpForm from "./SignUpForm";
 
-const initInputs = {username: "", password: ""}
+const initInputs = {username: "", password: "", email: ""}
 
 const Login = () => {
     const [inputs, setInputs] = useState(initInputs)
@@ -21,8 +22,8 @@ const Login = () => {
     }
 
     const handleLogin = (e) => {
-            e.preventDefault()
-            login(inputs)
+        e.preventDefault()
+        login(inputs)
     }
 
     const handleSignUp = (e) => {
@@ -31,27 +32,40 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h1>Capstone</h1>
+        <div className="main-container">
             {!toggle ?
                 <>
-                    <LoginForm 
-                        handleChange={handleChange}
-                        handleSubmit={handleLogin}
-                        inputs={inputs}
-                        btnText="Login"
-                    />
-                    <p onClick={()=>  toggleForm()} className='createaccount'>Create an Account</p>  
+                <h1 className="logintitle">Sign In</h1>
+                    <div className="login-wrapper">
+                        <LoginForm 
+                            handleChange={handleChange}
+                            handleSubmit={handleLogin}
+                            inputs={inputs}
+                            btnText="Login"
+                        />
+                        <hr className="break" />
+                        <div className="account">
+                            <p className="account-txt">Don't have an account?</p>
+                            <p onClick={()=>  toggleForm()} className='account-nav'>Create an Account</p>
+                        </div>
+                    </div>  
                 </>
                 :
                 <>
-                    <LoginForm 
-                        handleChange={handleChange}
-                        handleSubmit={handleSignUp}
-                        inputs={inputs}
-                        btnText="Sign Up"
-                    />
-                    <p onClick={()=> toggleForm()} className='haveaccount'>Already have an account?</p>
+                <h1 className="logintitle">Create an Account</h1>
+                    <div className="login-wrapper">
+                        <SignUpForm 
+                            handleChange={handleChange}
+                            handleSubmit={handleSignUp}
+                            inputs={inputs}
+                            btnText="Sign Up"
+                        />
+                        <hr className="break" />
+                        <div className="account">
+                            <p className="account-txt">Already have an acccount? </p>
+                            <p onClick={()=> toggleForm()} className='account-nav'> Sign In</p>
+                        </div>
+                    </div>
                 </>
             }
         </div>
