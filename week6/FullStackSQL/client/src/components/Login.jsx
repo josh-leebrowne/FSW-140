@@ -9,7 +9,7 @@ const Login = () => {
     const [inputs, setInputs] = useState(initInputs)
     const [toggle, setToggle] = useState(false)
 
-    const {signUp, login} = useContext(UserContext)
+    const {signUp, login, errMsg} = useContext(UserContext)
 
     const toggleForm = () => {
         setToggle(prev => !prev)
@@ -42,6 +42,7 @@ const Login = () => {
                             handleSubmit={handleLogin}
                             inputs={inputs}
                             btnText="Login"
+                            errMsg={errMsg}
                         />
                         <hr className="break" />
                         <div className="account">
@@ -59,6 +60,7 @@ const Login = () => {
                             handleSubmit={handleSignUp}
                             inputs={inputs}
                             btnText="Sign Up"
+                            errMsg={errMsg}
                         />
                         <hr className="break" />
                         <div className="account">

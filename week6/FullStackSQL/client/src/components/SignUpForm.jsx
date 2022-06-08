@@ -1,4 +1,4 @@
-const SignUpForm = ( { handleChange, handleSubmit, btnText, inputs} ) => {
+const SignUpForm = ( { handleChange, handleSubmit, btnText, inputs, errMsg} ) => {
 
     return(
         <div className="login-form-wrapper">
@@ -25,6 +25,7 @@ const SignUpForm = ( { handleChange, handleSubmit, btnText, inputs} ) => {
                     onChange={handleChange}
                     placeholder="Password"/>
                     <button  className="login-btn">{ btnText }</button>
+                    <p style={{backgroundColor: "#c00000", color: "#ffffff", textAlign: "center" }}>{ errMsg }</p>
             </form>
         </div>
     )

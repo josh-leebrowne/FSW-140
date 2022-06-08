@@ -9,7 +9,8 @@ const UserProvider = (props) => {
         username: '',
         email: '',
         password: '',
-        id: ''
+        id: '',
+        errMsg: ''
     }
 
     const [userState, setUserState] = useState(initState)

@@ -25,7 +25,7 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-app.post('/signup', (req, res) => {
+app.post('/signup', (req, res, next) => {
     console.log(req.body)
     const username = req.body.username
     const password = req.body.password
@@ -35,7 +35,12 @@ app.post('/signup', (req, res) => {
         "INSERT INTO users (username, password, email) VALUES (?,?,?)", 
         [username, password, email], ( err, result) => {
             if(err){
-                throw err
+                res.status(500)
+                return next(err)
+            }
+            if(username){
+                res.status(403)
+                return next(new Error("Username Already Taken"))
             }
             res.send("Values Inserted")
         }
@@ -52,6 +57,15 @@ app.post('/login', (req, res) => {
     })
 })
 
+
+//Error Handling
+app.use((err, req, res, next) => {
+    console.log(err)
+    if(err.name === "Axios Error"){
+        res.status(err.status)
+    }
+    return res.send({errMsg: err.message})
+})
 
 
 
